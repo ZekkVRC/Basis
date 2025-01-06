@@ -38,7 +38,7 @@ namespace Basis.Scripts.BasisSdk.Players
             }
             else
             {
-                BasisDebug.LogError("Mising CharacterIKCalibration");
+                BasisDebug.LogError("Missing CharacterIKCalibration");
                 HasAvatarDriver = false;
             }
             BasisAvatarStrainJiggleDriver = BasisHelpers.GetOrAddComponent<BasisAvatarStrainJiggleDriver>(this.gameObject);
@@ -46,6 +46,23 @@ namespace Basis.Scripts.BasisSdk.Players
             if (BasisAvatarStrainJiggleDriver != null)
             {
                 BasisAvatarStrainJiggleDriver.OnCalibration();
+            }
+        }
+        public void InitializeDistanceCulling(BasisAvatarDriver BasisAvatarDriver)
+        {
+            if (BasisAvatarDriver != null)
+            {
+                HasAvatarDriver = true;
+            }
+            else
+            {
+                BasisDebug.LogError("Missing Distance Culling");
+                HasAvatarDriver = false;
+            }
+            BasisDistanceCullingDriver BDCD = BasisHelpers.GetOrAddComponent<BasisDistanceCullingDriver>(this.gameObject);
+            if (BDCD != null)
+            {
+                BDCD.Initialize(BasisAvatar);
             }
         }
         public void UpdateFaceVisibility(bool State)

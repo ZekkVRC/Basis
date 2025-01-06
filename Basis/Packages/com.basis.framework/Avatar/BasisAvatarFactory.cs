@@ -189,6 +189,7 @@ namespace Basis.Scripts.Avatar
                     Player.BasisAvatar.IsOwnedLocally = false;
                     CreateRemote(remotePlayer);
                     remotePlayer.InitalizeIKCalibration(remotePlayer.RemoteAvatarDriver);
+                    remotePlayer.InitializeDistanceCulling(remotePlayer.RemoteAvatarDriver);
                     for (int Index = 0; Index < Avatar.Renders.Length; Index++)
                     {
                         Avatar.Renders[Index].gameObject.layer = 7;
@@ -260,6 +261,7 @@ namespace Basis.Scripts.Avatar
                     Player.BasisAvatar.IsOwnedLocally = false;
                     CreateRemote(BasisRemotePlayer);
                     Player.InitalizeIKCalibration(BasisRemotePlayer.RemoteAvatarDriver);
+                    Player.InitializeDistanceCulling(BasisRemotePlayer.RemoteAvatarDriver);
                     for (int Index = 0; Index < RenderCount; Index++)
                     {
                         Avatar.Renders[Index].gameObject.layer = 7;
